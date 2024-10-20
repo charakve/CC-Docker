@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-processing-deployment
+spec:
+  replicas: 2  # Specifies 2 replicas of your container
+  selector:
+    matchLabels:
+      app: text-processing
+  template:
+    metadata:
+      labels:
+        app: text-processing
+    spec:
+      containers:
+      - name: text-processing-container
+        image: charakve/my_text_processing_image:latest  # Replace with your actual image
+        ports:
+        command: ["/bin/sh", "-c", "sleep 3600"] # Keep the container 
